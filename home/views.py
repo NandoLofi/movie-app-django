@@ -11,13 +11,15 @@ API_KEY = env('API_KEY')
 def search(request):
     query = request.POST.get('q')
     if query:
-        data = request.get(f"https://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=en-US&page=1&query=succession&include_adult=false")
+        data = request.get(f"https://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}")
+
+        return render(request, 'home/results.html', {
+        "data": data.json()
+    })
     else: 
         return HttpResponse("Please enter a search query")
 
-    return render (request, 'home/results.html', {
-        "data": data.json()
-    })
+    
 
 def index(request):
     return render(request, 'home/index.html')
