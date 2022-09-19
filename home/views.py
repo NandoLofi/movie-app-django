@@ -1,5 +1,18 @@
+from http.client import HTTPResponse
 from django.shortcuts import render
+import environ
+env = environ.Env()
+environ.Env.read_env()
+from django.http import HttpResponse
+import requests
 
+API_KEY = env('API_KEY')
 # Create your views here.
 def search(request):
+    query = request.GET.get('q')
+    if query:
+        data = request.get(f"https://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=en-US&page=1&query={query}&include_adult=false")
+    else: 
+        return HttpResponse("Please enter a search query")
+
     return render (request, 'serach.html')
