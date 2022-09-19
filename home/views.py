@@ -16,7 +16,7 @@ def search(request):
         return HttpResponse("Please enter a search query")
 
     return render (request, 'home/results.html', {
-        data: data
+        data: data.json()
     })
 
 def index(request):
