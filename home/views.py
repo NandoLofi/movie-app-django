@@ -15,4 +15,9 @@ def search(request):
     else: 
         return HttpResponse("Please enter a search query")
 
-    return render (request, 'serach.html')
+    return render (request, 'home/results.html', {
+        data: data
+    })
+
+def index(request):
+    return render(request, 'home/index.html')
