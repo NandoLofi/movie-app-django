@@ -16,10 +16,9 @@ def search(request):
  
     return render(request, 'home/results.html', {
         "data": data.json(),
-        "type": request.GET.get("type")
     })
 
-def moviedetail(request):
+def showdetail(request):
     return render(request, 'home/details.html')
 
 def index(request):
