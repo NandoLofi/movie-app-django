@@ -9,15 +9,15 @@ import requests
 API_KEY = env('API_KEY')
 # Create your views here.
 def search(request):
-    query = request.POST.get('q')
+    query = request.GET.get ('q')
     if query:
-        data = request.get(f"https://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}")
-
-        return render(request, 'home/results.html', {
-        "data": data.json()
-    })
+        data = requests.get(f"https://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}")
     else: 
         return HttpResponse("Please enter a search query")
+        
+    return render(request, 'home/results.html', {
+        "data": data.json()
+    })
 
     
 
