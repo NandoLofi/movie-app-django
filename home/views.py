@@ -28,7 +28,8 @@ def search(request):
     #     return HttpResponse("Please enter a search query")
         
     return render(request, 'home/results.html', {
-        "data": data.json()
+        "data": data.json(),
+        "type": request.GET.get("type")
     })
 
     
