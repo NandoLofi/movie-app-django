@@ -13,26 +13,14 @@ def search(request):
     results = []
     if query:
         data = requests.get(f"https://api.themoviedb.org/3/search/tv?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}")
-        
-
-    #     temp = []
-    #     for d in data["results"]:
-    #         if len(temp) < 3:
-    #             temp.append({"name": d["name"], "poster_path": d["poster_path"], "overview": d["overview"]})
-    #         else:
-    #             results.append(temp)
-
-    #     results.append(temp) if len(temp) > 0 else None
-
-    # else: 
-    #     return HttpResponse("Please enter a search query")
-        
+ 
     return render(request, 'home/results.html', {
         "data": data.json(),
         "type": request.GET.get("type")
     })
 
-    
+def moviedetail(request):
+    return render(request, 'home/details.html')
 
 def index(request):
     return render(request, 'home/index.html')
