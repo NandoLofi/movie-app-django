@@ -6,6 +6,16 @@
 
 {% block main %}
 
-{{ data }}
+{% for data in data.results %}
+
+<div class="card mb-3">
+    <img src="https://image.tmdb.org/t/p/original/{{ data.poster_path }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ data.name }}</h5>
+      <p class="card-text">{{data.overview}}</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+</div>
+{% endfor %}
 
 {% endblock %}
