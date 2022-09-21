@@ -1,12 +1,13 @@
 from http.client import HTTPResponse
 import pstats
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import environ
 env = environ.Env()
 environ.Env.read_env()
 from django.http import HttpResponse
 import requests
 from .models import Comment
+from django.contrib.auth.models import User
 
 API_KEY = env('API_KEY')
 # Create your views here.
@@ -27,16 +28,21 @@ def showdetail(request, id):
         "data": data.json()
     })
 
-def comments(request, id):
+def comments(request, show_id):
     if request.method == "POST":
         user = request.user
         comment = request.POST.get("comment")
 
-        Comment(comment=comment, user=user, id=id).save()
-    else:
-        data = requests.get(f"https://api.themoviedb.org/3/tv/{id}?api_key={API_KEY}&language=en-US")
+        if not request.user.is_authenticated:
+            user = User.objects.get(id=1)
 
-        Comments = Comment.objects.filter(id=id)
+        Comment(comment=comment, user=user, show_id=show_id).save()
+
+        return redirect(f"/show/{show_id}/comments/")
+    else:
+        data = requests.get(f"https://api.themoviedb.org/3/tv/{show_id}?api_key={API_KEY}&language=en-US")
+
+        Comments = Comment.objects.filter(show_id=show_id)
 
         return render(request, "home/comments.html", {
             "data": data.json(),
