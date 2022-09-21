@@ -35,8 +35,13 @@ def comments(request, id):
         Comment(comment=comment, user=user, id=id).save()
     else:
         data = requests.get(f"https://api.themoviedb.org/3/tv/{id}?api_key={API_KEY}&language=en-US")
+
+        Comments = Comment.objects.filter(id=id)
+
         return render(request, "home/comments.html", {
-            "data": data.json()
+            "data": data.json(),
+            "Comments": Comments
+
         })
 
 def index(request):
