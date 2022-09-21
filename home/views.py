@@ -18,8 +18,12 @@ def search(request):
         "data": data.json(),
     })
 
-def showdetail(request):
-    return render(request, 'home/details.html')
+def showdetail(request, id):
+    data = requests.get(f"https://api.themoviedb.org/3/tv/{id}?api_key={API_KEY}&language=en-US")
+
+    return render(request, 'home/details.html', {
+        "data": data.json()
+    })
 
 def index(request):
     return render(request, 'home/index.html')
