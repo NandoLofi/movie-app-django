@@ -4,17 +4,17 @@
     Home
 {% endblock %}
 {% block main %}
-    <div class="home__container">
+    <div class="home__container" style="margin-top: 20px; padding: 10px;">
         <form action="/search" method="get">
             <div>
                 <input type="text" class="form-control" placeholder="Search for Show" name="q">
             </div>
-            <div class="btn-container">
+            <div class="btn-container" style="padding-top:10px;">
                 <button type="submit" class="btn btn-secondary">Submit</button>
             </div>
         </form>
-        <h3> Welcome To Your Show Search Page! </h3>
-        <p>
+        <h3 style="text-align: center;"> Welcome To Your Show Search Page! </h3>
+        <p style="text-align: center;">
             Please enter a show name and find your favorite shows with details!
         </p>
     </div>
