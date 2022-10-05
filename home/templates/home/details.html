@@ -1,8 +1,11 @@
+{% extends "home/base.html" %}
+
 
 {% block main %}
+<a href="/"><button class="btn btn-primary">Home</button></a>
     <h1>{{data.name}}</h1>
-    <div class="card" style="width: 18rem;">
-        <img src="http://image.tmdb.org/t/p/w400{{ data.poster_path }}" class="card-img-top" alt="">
+    <div class="card" style="width: 500px;">
+        <img src="http://image.tmdb.org/t/p/w400{{ data.poster_path }}" class="card-img-top" alt=""">
         <div class="card-body">
           <h5 class="card-title"></h5>
           <p class="card-text">{{data.overview}}</p>

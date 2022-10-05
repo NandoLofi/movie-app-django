@@ -4,12 +4,18 @@
     Home
 {% endblock %}
 {% block main %}
-   <form action="/search" method="get">
-        <div>
-            <input type="text" class="form-control" placeholder="Search for Show" name="q">
-        </div>
-        <div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
-        </div>
-    </form>
+    <div class="home__container">
+        <form action="/search" method="get">
+            <div>
+                <input type="text" class="form-control" placeholder="Search for Show" name="q">
+            </div>
+            <div class="btn-container">
+                <button type="submit" class="btn btn-secondary">Submit</button>
+            </div>
+        </form>
+        <h3> Welcome To Your Show Search Page! </h3>
+        <p>
+            Please enter a show name and find your favorite shows with details!
+        </p>
+    </div>
 {% endblock %}
