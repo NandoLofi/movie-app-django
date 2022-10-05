@@ -1,0 +1,21 @@
+body {
+    background-color: lightslategray;
+}
+.home__container {
+    margin-top: 20px;
+    padding: 10px;
+}
+.btn-container {
+    padding-top: 10px;
+}
+h3 {
+    text-align: center;
+}
+p {
+    text-align: center;
+}
+.card__container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+}
